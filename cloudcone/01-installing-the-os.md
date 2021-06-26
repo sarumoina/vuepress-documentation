@@ -4,15 +4,15 @@ permalink: 'cloudcone/installing-the-os'
 
 ---
 
-[[toc]]
+
 
 # Installing the OS
 
-## Step 1: Installing the OS
+[[toc]]
 
 I've chosen Ubuntu 20.04 as the choice for VPS OS.
 
-### Step 1.1: Setting up SSH keys
+## Step 1: Setting up SSH keys
 
 You'll require SSH keys in order to prevent logging in to computer with a password everytime.
 
@@ -56,10 +56,21 @@ $ wget -O install stats.cloudcone.sh && bash install some-random-string
 
 After the installation, you'll see the ram usage in cloudcone dashboard.
 
-## Step 2: Changing date/time
+## Step 2 : Changing date/time
 
 To set the timezone, run the following command:
 
 ```bash
 $ sudo timedatectl set-timezone Asia/Kolkata
 ```
+
+::: tip Note:
+If you want to get a list of time-zones available, you can use
+
+```bash
+$ timedatectl list-timezones
+
+``` 
+
+You can also use grep in order to narrow it down such as <code>$ timedatectl list-timezones | grep Asia/Kolkata </code>
+:::

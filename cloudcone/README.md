@@ -8,6 +8,8 @@ permalink: '/cloudcone/'
 
 # Introduction
 
+![](./cloudcone_logo_main.png)
+
 This page lists and describes your project with guides!
 
-[c](/cloudcone/installing-the-os/)
+[**Proceed**](/cloudcone/installing-the-os/)

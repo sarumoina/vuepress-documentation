@@ -14,7 +14,19 @@ module.exports = {
             collapsable: false,
             children: [
               '',  
-              '01-installing-the-os', 
+              '01-installing-the-os',
+              '02-installing-nodejs',
+              '03-installing-nginx',
+              '04-installing-yarn',
+              '05-installing-pm2',
+              '06-cloning-repo',
+              '07-environment-variables',
+              '08-bash-script-for-upload',
+              '09-ssl-via-lets-encrypt', 
+              '10-cron',
+              '11-copy-files-via-scp',
+              '12-installing-php',
+              '13-installing-mariadb',
               
               
             ]
