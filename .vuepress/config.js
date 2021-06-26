@@ -4,7 +4,8 @@ module.exports = {
     themeConfig: {
       nav: [
         { text: 'Home', link: '/' },
-        { text: 'Guide', link: '/guide/' },
+        { text: 'Cloudcone', link: '/guide/' },
+        { text: 'Vuepress', link: '/vuepress/' },
       ],
       sidebar: {
         '/guide/': [
@@ -17,7 +18,22 @@ module.exports = {
             ]
           }
         ],
+
+        '/vuepress/': [
+            {
+              title: 'Vuepress',
+              collapsable: true,
+              children: [
+                '',
+                
+              ]
+            }
+          ],
       },
     },
     dest: 'public',
+    plugins: [
+        '@vuepress/plugin-back-to-top',
+        '@vuepress/active-header-links'
+    ]
   }
