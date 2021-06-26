@@ -4,16 +4,18 @@ module.exports = {
     themeConfig: {
       nav: [
         { text: 'Home', link: '/' },
-        { text: 'Cloudcone', link: '/guide/' },
+        { text: 'Cloudcone', link: '/cloudcone/' },
         { text: 'Vuepress', link: '/vuepress/' },
       ],
       sidebar: {
-        '/guide/': [
+        '/cloudcone/': [
           {
             title: 'Cloudcone',
             collapsable: false,
             children: [
-              '',
+              '',  
+              '01-installing-the-os', 
+              
               
             ]
           }
@@ -22,18 +24,16 @@ module.exports = {
         '/vuepress/': [
             {
               title: 'Vuepress',
-              collapsable: true,
+              collapsable: false,
               children: [
-                '',
+                '01-getting-started',
+                '02-deployment',
                 
               ]
             }
           ],
       },
+      
     },
-    dest: 'public',
-    plugins: [
-        '@vuepress/plugin-back-to-top',
-        '@vuepress/active-header-links'
-    ]
+    dest: 'public'
   }
