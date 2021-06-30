@@ -27,6 +27,7 @@ module.exports = {
               '11-copy-files-via-scp',
               '12-installing-php',
               '13-installing-mariadb',
+              '14-jekyll',
               
               
             ]
@@ -44,6 +45,17 @@ module.exports = {
               ]
             }
           ],
+
+        '/jekyll/':[
+          {
+            title: 'Jekyll',
+            collapsable: false,
+            children: [
+              '01-installing-jekyll',
+              '02-liquid-template',
+            ]
+          }
+        ]
       },
       
     },

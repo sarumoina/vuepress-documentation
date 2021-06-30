@@ -15,3 +15,4 @@ If you have any queries, you can contact us at admin@xopun.com
 
 - [Cloudcone Tutorial](./cloudcone/README.md)
 - [Vuepress Tutorial](./vuepress/02-deployment.md)
+- [Jekyll Tutorial](./jekyll/README.md)

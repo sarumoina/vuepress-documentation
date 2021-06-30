@@ -23,5 +23,7 @@ This guide will tell you how to setup a VPS server with [Ubuntu server 20.04](ht
 
 Now, let's jump in to the section.
 
+::: tip Getting started
 [**Proceed for the tutorial**](./01-installing-the-os.md)
+:::
 
