@@ -6,6 +6,7 @@ module.exports = {
         { text: 'Home', link: '/' },
         { text: 'Cloudcone', link: '/cloudcone/' },
         { text: 'Vuepress', link: '/vuepress/' },
+        { text: 'Tutorials', link: '/tutorials/' },
       ],
       sidebar: {
         '/cloudcone/': [
@@ -45,6 +46,20 @@ module.exports = {
               ]
             }
           ],
+        
+        
+
+        '/tutorials/javascript/': [
+          {
+            title:'Tutorials/Javascript',
+            collapsable:true,
+            children: [
+              '',
+              'arrow-functions.md',
+              'javascript-destructuring.md'
+            ]
+          }
+        ],
 
         '/jekyll/':[
           {
