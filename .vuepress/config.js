@@ -6,7 +6,14 @@ module.exports = {
         { text: 'Home', link: '/' },
         { text: 'Cloudcone', link: '/cloudcone/' },
         { text: 'Vuepress', link: '/vuepress/' },
-        { text: 'Tutorials', link: '/tutorials/' },
+        { 
+          text: 'Tutorials', 
+          ariaLabel: 'Tutorials',
+          items: [
+            {text: 'Javascript', link:'/tutorials/javascript/'},
+            {text: 'Nextjs', link:'/tutorials/nextjs/'}
+          ]
+        },
       ],
       sidebar: {
         '/cloudcone/': [
@@ -57,6 +64,17 @@ module.exports = {
               '',
               'arrow-functions.md',
               'javascript-destructuring.md'
+            ]
+          }
+        ],
+
+        '/tutorials/nextjs/': [
+          {
+            title:'Tutorials/Nextjs',
+            collapsable:true,
+            children: [
+              '',
+              'nextjs-authentication.md'
             ]
           }
         ],
