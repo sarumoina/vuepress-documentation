@@ -11,7 +11,8 @@ module.exports = {
           ariaLabel: 'Tutorials',
           items: [
             {text: 'Javascript', link:'/tutorials/javascript/'},
-            {text: 'Nextjs', link:'/tutorials/nextjs/'}
+            {text: 'Nextjs', link:'/tutorials/nextjs/'},
+            {text: 'elm', link:'/tutorials/elm/'}
           ]
         },
       ],
@@ -68,6 +69,17 @@ module.exports = {
           }
         ],
 
+        '/tutorials/elm/': [
+          {
+            title: 'Tutorials/elm',
+            collapsable: true,
+            children: [
+              '',
+              '01-installation'
+            ]
+          }
+        ],
+
         '/tutorials/nextjs/': [
           {
             title:'Tutorials/Nextjs',
@@ -92,5 +104,10 @@ module.exports = {
       },
       
     },
-    dest: 'public'
+    dest: 'public',
+    plugins: {
+      'sitemap': {
+        hostname: 'https://documentation.xopun.com'
+      },
+    }
   }
