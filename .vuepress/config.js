@@ -37,7 +37,7 @@ module.exports = {
               '12-installing-php',
               '13-installing-mariadb',
               '14-jekyll',
-              
+              '15-installing-mongodb',
               
             ]
           }
