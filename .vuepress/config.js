@@ -38,6 +38,7 @@ module.exports = {
               '13-installing-mariadb',
               '14-jekyll',
               '15-installing-mongodb',
+              '16-installing-symfony',
               
             ]
           }
