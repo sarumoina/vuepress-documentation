@@ -308,6 +308,7 @@ This will bring up screen like below:
 
 There are 4 choices for the alternative php (providing /usr/bin/php).
 
+```
   Selection    Path             Priority   Status
 ------------------------------------------------------------
 * 0            /usr/bin/php7.2   72        auto mode
@@ -316,8 +317,10 @@ There are 4 choices for the alternative php (providing /usr/bin/php).
   3            /usr/bin/php7.1   71        manual mode
   4            /usr/bin/php7.2   72        manual mode
 Press <enter> to keep the current choice[*], or type selection number:
+```
+
    
- :::warning extension not found
+ :::warning **Extension not found**
  If you are getting extension not found/missing errors, then you should install via the following:
    ```
    sudo apt install php8.0-gd
