@@ -296,5 +296,39 @@ APP_KEY=base64:/<your base64 string>
 
 You should generate the key by <code>php artisan key:generate</code> but as I've found that,the system fails to write the config to the env file so write it manually.
 
+### Troubleshooting while installing PHP
+
+if you have more than one php in the same machine, you can switch to different by the following:
+
+```bash
+$ sudo update-alternatives --config php
+```
+
+This will bring up screen like below:
+
+There are 4 choices for the alternative php (providing /usr/bin/php).
+
+  Selection    Path             Priority   Status
+------------------------------------------------------------
+* 0            /usr/bin/php7.2   72        auto mode
+  1            /usr/bin/php5.6   56        manual mode
+  2            /usr/bin/php7.0   70        manual mode
+  3            /usr/bin/php7.1   71        manual mode
+  4            /usr/bin/php7.2   72        manual mode
+Press <enter> to keep the current choice[*], or type selection number:
+   
+ :::warning extension not found
+ If you are getting extension not found/missing errors, then you should install via the following:
+   ```
+   sudo apt install php8.0-gd
+   sudo apt install php8.0-mbstring
+   ```
+   etc. 
+ :::  
+
+
+
+
+
 
 
