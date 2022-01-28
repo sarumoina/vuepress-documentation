@@ -3,13 +3,11 @@ title: 'Copy files via SCP'
 permalink: '/cloudcone/copy-files-via-scp'
 ---
 
-# Copy files via SCP
+# Creating ssh connection between two servers and copying files between them
 
-In order to copy files from server to local,
+[[toc]]
 
-```bash
-$ scp -r user@xexample.com:/folder/backups/2021-01-21/ bak
-```
+
 
 # Creating ssh connection between two servers
 
@@ -26,9 +24,17 @@ ssh-copy-id -i ~/.ssh/mykey user@host
 ```
 where mykey is the key you generated in step 1. 
 
-:::info
-<strong>Note:</strong>
+:::warning Note:
+
 For the first time, you will have to use password in order to access to the shell in the remote machine. 
 :::
 
 And done. 
+
+## Copy files via SCP
+
+In order to copy files from server to local,
+
+```bash
+$ scp -r user@xexample.com:/folder/backups/2021-01-21/ bak
+```     
