@@ -20,7 +20,7 @@ $ sudo apt install php8.0-fpm
 
 # if you are installing laravel, then install these following too:
 
-$ sudo apt install openssl php-common php-curl php-json php-mbstring php-mysql php-xml php-zip
+$ sudo apt install openssl php-common php-curl php-json php-mbstring php-mysql php-xml php-zip php-gd
 
 # if you will use mongodb as driver later on (vide `composer require jenssegers/mongodb`) then install the mongodb drivers prior to that
 
