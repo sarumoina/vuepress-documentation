@@ -19,11 +19,14 @@ You'll require SSH keys in order to prevent logging in to computer with a passwo
 **In your local computer**
 
 ```bash
-$ ssh-keygen
+$ ssh-keygen -t ed25519 -C "your_email@example.com"
 # Follow the onscreen directions in order to generate the public and the private pair
 $ cat YOUR_KEY.pub
 # The public key will appear
 # Copy the public key.
+
+# Add the ssh key to the agent
+$ ssh-add ~/.ssh/id_ed25519
 ```
 
 **In cloudcone web dashboard**
@@ -74,3 +77,41 @@ $ timedatectl list-timezones
 
 You can also use grep in order to narrow it down such as <code>$ timedatectl list-timezones | grep Asia/Kolkata </code>
 :::
+
+## Step 3: Create a New Sudo-enabled User in Ubuntu 22.04
+
+```bash
+$ adduser itachi
+```
+**Output:**
+
+```
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+
+Changing the user information for sammy
+Enter the new value, or press ENTER for the default
+    Full Name []:
+    Room Number []:
+    Work Phone []:
+    Home Phone []:
+    Other []:
+Is the information correct? [Y/n]
+```
+
+adding the user to the sudo group
+
+```bash
+$ usermod -aG sudo itachi
+```
+
+**Testing sudo Access**
+
+```bash
+sudo - itachi
+```
+
+
+
+

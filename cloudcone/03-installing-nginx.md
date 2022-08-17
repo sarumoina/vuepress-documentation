@@ -114,3 +114,32 @@ Restart the server with <code>sudo systemctl restart nginx</code> after any modi
 ```bash
 $ sudo tail /var/log/nginx/error.log -n 200
 ```
+
+## Permission
+
+IT could be a bit tricky to setup the permission for nginx.
+
+### Step 1: Add user to group www-data
+
+```bash
+$ sudo adduser {USER-NAME-HERE} {GROUP-NAME-HERE}
+
+# e.g. 
+
+$ sudo adduser itachi www-data
+```
+
+### Step 2: ownership of the folder
+
+```bash 
+$ sudo chown -R $USER:www-data /var/www/html
+```
+
+### Give the execute permission
+
+```bash
+$ sudo chmod +x /var
+$ sudo chmod +x /var/www
+$ sudo chmod +x /var/www/html
+```
+[... to be continued.]

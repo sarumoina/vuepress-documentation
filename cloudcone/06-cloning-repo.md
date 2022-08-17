@@ -45,3 +45,35 @@ Go to the base (project folder where **package.json** exists) folder and execute
 ```bash
 $ git config core.sshCommand "ssh -i ~/.ssh/id_rsa_example -F /dev/null"
 ```
+
+## Step 4: SSH config file
+
+SSH config file makes it easy to connect. 
+
+`~/.ssh/config`
+
+```bash
+Host fedora25
+        HostName 192.168.56.15
+        Port 22
+        ForwardX11 no
+
+Host centos7
+        HostName 192.168.56.10
+        Port 22
+        ForwardX11 no
+
+Host ubuntu
+        HostName 192.168.56.5
+        Port 2222
+        ForwardX11 yes
+
+Host *
+        User tecmint
+        IdentityFile ~/.ssh/id_rsa
+        Protocol 2
+        Compression yes
+        ServerAliveInterval 60
+        ServerAliveCountMax 20
+        LogLevel INFO
+```
