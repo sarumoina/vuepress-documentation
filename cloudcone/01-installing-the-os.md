@@ -10,7 +10,7 @@ permalink: 'cloudcone/installing-the-os'
 
 [[toc]]
 
-I've chosen Ubuntu 20.04 as the choice for VPS OS.
+I've chosen Ubuntu 22.04 as the choice for VPS OS.
 
 ## Step 1: Setting up SSH keys
 

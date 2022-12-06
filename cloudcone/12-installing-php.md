@@ -7,16 +7,18 @@ permalink: '/cloudcone/installing-php'
 
 [[toc]]
 
-## Install php8.0 fpm
+## Install php8.1 fpm
 
-First install the php8.0 fpm
+First install the php8.1 fpm
+
+
 
 ```bash
 
 $ sudo apt install software-properties-common
 $ sudo add-apt-repository ppa:ondrej/php
 $ sudo apt update
-$ sudo apt install php8.0-fpm
+$ sudo apt install php8.1-fpm
 
 # if you are installing laravel, then install these following too:
 
@@ -37,7 +39,7 @@ You can test the installation via the following:
 
 ```bash
 
-$ systemctl status php8.0-fpm
+$ systemctl status php8.1-fpm
 
 ```
 
@@ -293,8 +295,156 @@ APP_DEBUG=true
 APP_KEY=base64:/<your base64 string>
 
 ```
+You should generate the key by <code>php artisan key:generate</code> 
 
-You should generate the key by <code>php artisan key:generate</code> but as I've found that,the system fails to write the config to the env file so write it manually.
+  
+:::warning 
+**Extension not found**
+
+If you are getting extension not found/missing errors, then you should install via the following (**Supposing you have php8.1 installed**):
+```bash
+sudo apt install php8.1-extension-name
+
+#e.g. 
+sudo apt install php8.1-gd
+sudo apt install php8.1-mbstring
+```
+etc. 
+:::  
+
+
+
+
+### Installing Redis for laravel
+
+```bash
+sudo apt update
+sudo apt install redis-server
+```
+Make the following changes to `/etc/redis/redis.conf` via executing the following command:
+
+```bash
+sudo nano /etc/redis/redis,conf
+```
+
+**change the supervised directive from "no" to "systemd"**
+
+```
+. . .
+
+# If you run Redis from upstart or systemd, Redis can interact with your
+# supervision tree. Options:
+#   supervised no      - no supervision interaction
+#   supervised upstart - signal upstart by putting Redis into SIGSTOP mode
+#   supervised systemd - signal systemd by writing READY=1 to $NOTIFY_SOCKET
+#   supervised auto    - detect upstart or systemd method based on
+#                        UPSTART_JOB or NOTIFY_SOCKET environment variables
+# Note: these supervision methods only signal "process is ready."
+#       They do not enable continuous liveness pings back to your supervisor.
+supervised systemd
+
+. . .
+```
+
+```bash
+sudo systemctl restart redis.service
+```
+
+Testing Redis
+
+```
+sudo systemctl status redis
+```
+You should see similar to following:
+
+```
+ubuntu:~$ sudo systemctl status redis
+● redis-server.service - Advanced key-value store
+     Loaded: loaded (/lib/systemd/system/redis-server.service; enabled; vendor preset: enabled)
+     Active: active (running) since Thu 2022-08-25 07:46:38 IST; 46min ago
+       Docs: http://redis.io/documentation,
+             man:redis-server(1)
+   Main PID: 5530 (redis-server)
+     Status: "Ready to accept connections"
+      Tasks: 5 (limit: 9305)
+     Memory: 2.6M
+        CPU: 3.411s
+     CGroup: /system.slice/redis-server.service
+             └─5530 "/usr/bin/redis-server 127.0.0.1:6379" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" ""
+
+Aug 25 07:46:38 15isk systemd[1]: Starting Advanced key-value store...
+Aug 25 07:46:38 15isk systemd[1]: Started Advanced key-value store.
+```
+
+To test that Redis is functioning correctly, connect to the server using redis-cli, Redis’s command-line client:
+
+```
+$ redis-cli
+```
+
+In the prompt that follows, test connectivity with the ping command:
+
+```
+127.0.0.1:6379> ping
+```
+Output
+
+```bash
+PONG
+```
+
+This output confirms that the server connection is still alive. Next, check that you’re able to set keys by running:
+
+```bash
+127.0.0.1:6379>set test "It's working!"
+```
+
+Output:
+```bash
+OK
+```
+
+Retrieve the value by typing:
+
+```bash
+127.0.0.1:6379>get test
+```
+
+Assuming everything is working, you will be able to retrieve the value you stored:
+
+Output:
+
+```bash
+It's working!
+```
+
+#### Install the redis extension
+
+```bash
+sudo apt install php8.1-redis
+```
+
+#### Install predis/predis
+Install the redis package for laravel via composer
+
+```bash
+composer require predis/predis
+```
+
+In `config/app.php`
+
+```
+'aliases' => Facade::defaultAliases()->merge([
+    'Redis' => Illuminate\Support\Facades\Redis::class,
+])->toArray(),
+```
+
+Redis should start to work without any issues. 
+
+
+
+
+
 
 ### Troubleshooting while installing PHP
 
@@ -306,7 +456,7 @@ $ sudo update-alternatives --config php
 
 This will bring up screen like below:
 
-There are 4 choices for the alternative php (providing /usr/bin/php).
+There are 4 choices (can be more/less for you depending upon your installation) for the alternative php (providing /usr/bin/php).
 
 ```
   Selection    Path             Priority   Status
@@ -319,15 +469,8 @@ There are 4 choices for the alternative php (providing /usr/bin/php).
 Press <enter> to keep the current choice[*], or type selection number:
 ```
 
-   
- :::warning **Extension not found**
- If you are getting extension not found/missing errors, then you should install via the following:
-   ```
-   sudo apt install php8.0-gd
-   sudo apt install php8.0-mbstring
-   ```
-   etc. 
- :::  
+ 
+
 
 
 

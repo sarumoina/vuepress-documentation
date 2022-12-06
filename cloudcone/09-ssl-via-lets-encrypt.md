@@ -23,7 +23,7 @@ This will enable the SSL version of your site.
 
 Add the following in **/etc/nginx/sites-enabled/default**
 
-```
+```nginx
 
 server {
     listen 80 default_server;

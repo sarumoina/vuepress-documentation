@@ -8,9 +8,6 @@ permalink: '/cloudcone/copy-files-via-scp'
 [[toc]]
 
 
-
-# Creating ssh connection between two servers
-
 ## Step 1: Create SSH key
 
 goto `~/.ssh` folder and execute `ssh-keygen`
@@ -31,10 +28,16 @@ For the first time, you will have to use password in order to access to the shel
 
 And done. 
 
-## Copy files via SCP
+## Step 3:  Copy files via SCP
 
 In order to copy files from server to local,
 
 ```bash
 $ scp -r user@xexample.com:/folder/backups/2021-01-21/ bak
 ```     
+
+In order to copy files from local to server,
+
+```bash
+$ scp -r file_to_copy.ext user@your_domain.com:/path/to/folder/in/remote/server
+```

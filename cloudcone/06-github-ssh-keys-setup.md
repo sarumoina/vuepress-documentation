@@ -1,6 +1,6 @@
 ---
-title: 'Cloning Repo'
-permalink: '/cloudcone/cloning-repo'
+title: 'Github SSH keys setup'
+permalink: '/cloudcone/github-ssh-keys-setup'
 
 ---
 
@@ -16,10 +16,13 @@ Before cloning he repo, make sure that you have generated the SSH key and then u
 goto `~/.ssh` folder in your server and generate the key.
 
 ```bash
-$ ssh-keygen -t rsa
-# give the name as id_rsa
-# give the passphrase
-$ cat id_rsa.pub
+$ ssh-keygen -t ed25519 -C "your_email@example.com" 
+$ #ed25519 is the newest encryption
+$ eval "$(ssh-agent -s)" #Start the ssh-agent in the background.
+$ ssh-add ~/.ssh/id_ed25519 #Add your SSH private key to the ssh-agent. 
+$ cat ~/.ssh/id_ed25519.pub
+$ # Then select and copy the contents of the id_ed25519.pub file
+$ # displayed in the terminal to your clipboard
 ```
 
 <code>Copy the above content to github and paste it in _Deploy_ keys </code>. You have to remember that, though the name of the ssh key generated via ssh-keygen can be anything,I have only find it working when the name of the key is id_rsa (There's a workaround though which will be explained later on).
@@ -52,28 +55,18 @@ SSH config file makes it easy to connect.
 
 `~/.ssh/config`
 
-```bash
-Host fedora25
-        HostName 192.168.56.15
-        Port 22
-        ForwardX11 no
+```
 
-Host centos7
-        HostName 192.168.56.10
-        Port 22
-        ForwardX11 no
+Host github.com
+        User git
+        Hostname github.com
+        PreferredAuthentications publickey
+        IdentityFile ~/.ssh/github
 
-Host ubuntu
-        HostName 192.168.56.5
-        Port 2222
-        ForwardX11 yes
+Host anyname
+        User root
+        Hostname your_host_name
+        PreferredAuthentications publickey
+        IdentityFile ~/.ssh/your_private_key
 
-Host *
-        User tecmint
-        IdentityFile ~/.ssh/id_rsa
-        Protocol 2
-        Compression yes
-        ServerAliveInterval 60
-        ServerAliveCountMax 20
-        LogLevel INFO
 ```
